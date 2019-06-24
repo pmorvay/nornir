@@ -1,0 +1,47 @@
+2019-06-24 21:12:25,077 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts', 'interfaces']} on 1 hosts
+2019-06-24 21:12:25,134 - nornir.core.task -    ERROR -      start() - Host 'sandXE.cisco': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/Users/pmorvay/Documents/Cisco/Devnet/nornir/venv/lib/python3.7/site-packages/netmiko/base_connection.py", line 858, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/Users/pmorvay/Documents/Cisco/Devnet/nornir/venv/lib/python3.7/site-packages/paramiko/client.py", line 340, in connect
+    to_try = list(self._families_and_addresses(hostname, port))
+  File "/Users/pmorvay/Documents/Cisco/Devnet/nornir/venv/lib/python3.7/site-packages/paramiko/client.py", line 204, in _families_and_addresses
+    hostname, port, socket.AF_UNSPEC, socket.SOCK_STREAM
+  File "/usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/socket.py", line 748, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/pmorvay/Documents/Cisco/Devnet/nornir/venv/lib/python3.7/site-packages/napalm/base/base.py", line 87, in _netmiko_open
+    **netmiko_optional_args
+  File "/Users/pmorvay/Documents/Cisco/Devnet/nornir/venv/lib/python3.7/site-packages/netmiko/ssh_dispatcher.py", line 228, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/Users/pmorvay/Documents/Cisco/Devnet/nornir/venv/lib/python3.7/site-packages/netmiko/base_connection.py", line 312, in __init__
+    self.establish_connection()
+  File "/Users/pmorvay/Documents/Cisco/Devnet/nornir/venv/lib/python3.7/site-packages/netmiko/base_connection.py", line 864, in establish_connection
+    raise NetMikoTimeoutException(msg)
+netmiko.ssh_exception.NetMikoTimeoutException: Connection to device timed-out: cisco_ios developer@ios-xe-mgmt-latest.cisco.com:8181
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/pmorvay/Documents/Cisco/Devnet/nornir/venv/lib/python3.7/site-packages/nornir/core/task.py", line 67, in start
+    r = self.task(self, **self.params)
+  File "/Users/pmorvay/Documents/Cisco/Devnet/nornir/venv/lib/python3.7/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 49, in napalm_get
+    device = task.host.get_connection("napalm", task.nornir.config)
+  File "/Users/pmorvay/Documents/Cisco/Devnet/nornir/venv/lib/python3.7/site-packages/nornir/core/inventory.py", line 302, in get_connection
+    extras=conn.extras,
+  File "/Users/pmorvay/Documents/Cisco/Devnet/nornir/venv/lib/python3.7/site-packages/nornir/core/inventory.py", line 352, in open_connection
+    configuration=configuration,
+  File "/Users/pmorvay/Documents/Cisco/Devnet/nornir/venv/lib/python3.7/site-packages/nornir/plugins/connections/napalm.py", line 51, in open
+    connection.open()
+  File "/Users/pmorvay/Documents/Cisco/Devnet/nornir/venv/lib/python3.7/site-packages/napalm/ios/ios.py", line 151, in open
+    device_type, netmiko_optional_args=self.netmiko_optional_args
+  File "/Users/pmorvay/Documents/Cisco/Devnet/nornir/venv/lib/python3.7/site-packages/napalm/base/base.py", line 90, in _netmiko_open
+    raise ConnectionException("Cannot connect to {}".format(self.hostname))
+napalm.base.exceptions.ConnectionException: Cannot connect to developer@ios-xe-mgmt-latest.cisco.com
+
+2019-06-24 21:12:57,859 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts', 'interfaces']} on 1 hosts
+2019-06-24 21:14:23,924 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 1 hosts
