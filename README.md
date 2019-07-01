@@ -9,3 +9,7 @@ Predefined IOS-XE sandbox
 Great source of examples and initial install:
 
 https://github.com/nornir-automation/nornir-tools
+
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
