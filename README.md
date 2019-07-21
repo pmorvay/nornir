@@ -1,4 +1,6 @@
 # nornir
+#RUN
+./First nornir.py
 
 This repo is initial step to run nornir.
 
